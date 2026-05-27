@@ -114,4 +114,218 @@ router.get('/:slug', async (req, res) => {
   }
 });
 
+
 module.exports = router;
+// ================================================
+// @route   PUT /api/posts/:id
+// @desc    Update a post
+// @access  Private (author only)
+// ================================================
+router.put('/:id', protect, async (req, res) => {
+  try {
+
+    // Find the post by ID
+    let post = await Post.findById(req.params.id);
+
+    // Check if post exists
+    if (!post) {
+      return res.status(404).json({
+        success: false,
+        message: 'Post not found'
+      });
+    }
+
+    // Check if logged in user is the author
+    // post.author is ObjectId so we convert to string
+    if (post.author.toString() !== req.user.id) {
+      return res.status(403).json({
+        success: false,
+        message: 'You can only edit your own posts'
+      });
+    }
+
+    // Get updated fields from request body
+    const { title, content, category, tags, status, featuredImage } = req.body;
+
+    // Update the post
+    post = await Post.findByIdAndUpdate(
+      req.params.id,
+      {
+        title,
+        content,
+        category,
+        tags,
+        status,
+        featuredImage,
+        updatedAt: Date.now()
+      },
+      {
+        new: true,           // return updated post
+        runValidators: true  // run schema validators
+      }
+    ).populate('author', 'name avatar');
+
+    res.json({
+      success: true,
+      message: 'Post updated successfully!',
+      post
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
+
+
+// ================================================
+// @route   DELETE /api/posts/:id
+// @desc    Delete a post
+// @access  Private (author only)
+// ================================================
+router.delete('/:id', protect, async (req, res) => {
+  try {
+
+    // Find the post by ID
+    const post = await Post.findById(req.params.id);
+
+    // Check if post exists
+    if (!post) {
+      return res.status(404).json({
+        success: false,
+        message: 'Post not found'
+      });
+    }
+
+    // Check if logged in user is the author
+    if (post.author.toString() !== req.user.id) {
+      return res.status(403).json({
+        success: false,
+        message: 'You can only delete your own posts'
+      });
+    }
+
+    // Delete the post
+    await Post.findByIdAndDelete(req.params.id);
+
+    res.json({
+      success: true,
+      message: 'Post deleted successfully!'
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
+
+
+// ================================================
+// @route   DELETE /api/posts/:id
+// @desc    Delete a post
+// @access  Private (author only)
+// ================================================
+router.delete('/:id', protect, async (req, res) => {
+  try {
+
+    // Find the post by ID
+    const post = await Post.findById(req.params.id);
+
+    // Check if post exists
+    if (!post) {
+      return res.status(404).json({
+        success: false,
+        message: 'Post not found'
+      });
+    }
+
+    // Check if logged in user is the author
+    if (post.author.toString() !== req.user.id) {
+      return res.status(403).json({
+        success: false,
+        message: 'You can only delete your own posts'
+      });
+    }
+
+    // Delete the post
+    await Post.findByIdAndDelete(req.params.id);
+
+    res.json({
+      success: true,
+      message: 'Post deleted successfully!'
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
+
+// ================================================
+// @route   PUT /api/posts/:id/like
+// @desc    Like or Unlike a post (toggle)
+// @access  Private (must be logged in)
+// ================================================
+router.put('/:id/like', protect, async (req, res) => {
+  try {
+
+    // Find the post
+    const post = await Post.findById(req.params.id);
+
+    // Check if post exists
+    if (!post) {
+      return res.status(404).json({
+        success: false,
+        message: 'Post not found'
+      });
+    }
+
+    // Check if user already liked this post
+    // .includes() checks if user ID exists in likes array
+    const alreadyLiked = post.likes.includes(req.user.id);
+
+    if (alreadyLiked) {
+
+      // User already liked → UNLIKE
+      // $pull removes the user ID from likes array
+      await Post.findByIdAndUpdate(req.params.id, {
+        $pull: { likes: req.user.id }
+      });
+
+      res.json({
+        success: true,
+        message: 'Post unliked!',
+        liked: false,
+        likesCount: post.likes.length - 1
+      });
+
+    } else {
+
+      // User has not liked → LIKE
+      // $push adds the user ID to likes array
+      await Post.findByIdAndUpdate(req.params.id, {
+        $push: { likes: req.user.id }
+      });
+
+      res.json({
+        success: true,
+        message: 'Post liked!',
+        liked: true,
+        likesCount: post.likes.length + 1
+      });
+    }
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
+
