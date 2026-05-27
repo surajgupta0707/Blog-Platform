@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BlogSpace — Home</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">✍️ BlogSpace</a>
+      <div class="navbar-menu">
+        <a href="index.html">Home</a>
+        <a href="#" onclick="goToEditor()">Write</a>
+        <div class="navbar-user" id="navbarUser">
+          <!-- Filled by JS based on login status -->
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <h1>Welcome to BlogSpace ✍️</h1>
+    <p>Discover stories, ideas, and knowledge from writers around the world</p>
+    <div class="search-bar">
+      <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Search posts..." 
+      />
+      <button onclick="searchPosts()">Search</button>
+    </div>
+  </section>
+
+  <!-- ===== CATEGORY FILTERS ===== -->
+  <section class="filters">
+    <div class="container">
+      <div class="filters-wrap" id="filtersWrap">
+        <button class="filter-btn active" onclick="filterByCategory('')">
+          All
+        </button>
+        <button class="filter-btn" onclick="filterByCategory('Technology')">
+          Technology
+        </button>
+        <button class="filter-btn" onclick="filterByCategory('Travel')">
+          Travel
+        </button>
+        <button class="filter-btn" onclick="filterByCategory('Food')">
+          Food
+        </button>
+        <button class="filter-btn" onclick="filterByCategory('Health')">
+          Health
+        </button>
+        <button class="filter-btn" onclick="filterByCategory('Business')">
+          Business
+        </button>
+        <button class="filter-btn" onclick="filterByCategory('Education')">
+          Education
+        </button>
+        <button class="filter-btn" onclick="filterByCategory('Entertainment')">
+          Entertainment
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="container">
+    <div class="main-layout">
+
+      <!-- POSTS SECTION -->
+      <section>
+        <div id="postsContainer">
+          <!-- Loading spinner shown first -->
+          <div class="loading" id="loadingSpinner">
+            <div class="loading-spinner"></div>
+            <p>Loading posts...</p>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination"></div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+
+        <!-- Trending Posts -->
+        <div class="sidebar-card">
+          <h3>🔥 Trending Posts</h3>
+          <div id="trendingPosts">
+            <p style="color:var(--gray);font-size:0.9rem;">Loading...</p>
+          </div>
+        </div>
+
+        <!-- Write a Post CTA -->
+        <div class="sidebar-card" style="background: linear-gradient(135deg,#667eea,#764ba2); color:white;">
+          <h3 style="color:white;border-color:rgba(255,255,255,0.3);">
+            ✍️ Start Writing
+          </h3>
+          <p style="font-size:0.9rem;margin-bottom:16px;opacity:0.9;">
+            Share your ideas with the world!
+          </p>
+          <button 
+            onclick="goToEditor()" 
+            class="btn" 
+            style="background:white;color:var(--primary);width:100%;">
+            Write a Post
+          </button>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script src="js/posts.js"></script>
+</body>
+</html>

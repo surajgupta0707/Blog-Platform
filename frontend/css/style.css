@@ -1,212 +1,388 @@
-/* ===== RESET — Remove default browser styles ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ===== NAVBAR ===== */
+.navbar {
+  background: var(--white);
+  padding: 16px 0;
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
 }
 
-/* ===== VARIABLES — Change these to change whole site theme ===== */
-:root {
-  --primary: #4f46e5;
-  --primary-dark: #3730a3;
-  --dark: #1e1b4b;
-  --gray: #6b7280;
-  --light-gray: #f3f4f6;
-  --white: #ffffff;
-  --danger: #ef4444;
-  --success: #10b981;
-  --border: #e5e7eb;
-  --radius: 12px;
-  --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* ===== BASE STYLES ===== */
-body {
-  font-family: var(--font);
-  background-color: #f8fafc;
-  color: #1f2937;
-  line-height: 1.6;
-}
-
-a {
-  text-decoration: none;
-  color: var(--primary);
-}
-
-a:hover {
-  color: var(--primary-dark);
-}
-
-/* ===== AUTH PAGE BACKGROUND ===== */
-/* This creates the purple gradient background */
-.auth-container {
-  min-height: 100vh;
+.navbar .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 20px;
+  justify-content: space-between;
 }
 
-/* ===== WHITE BOX IN CENTER ===== */
-.auth-box {
-  background: var(--white);
-  border-radius: 20px;
-  padding: 40px;
-  width: 100%;
-  max-width: 450px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
-/* ===== LOGO AT TOP ===== */
-.auth-logo {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.auth-logo h1 {
-  font-size: 2rem;
-  color: var(--primary);
+.navbar-brand {
+  font-size: 1.6rem;
   font-weight: 800;
+  color: var(--primary);
+  text-decoration: none;
 }
 
-.auth-logo p {
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar-menu a {
   color: var(--gray);
-  margin-top: 5px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.3s;
 }
 
-.auth-box h2 {
-  font-size: 1.5rem;
-  color: var(--dark);
-  margin-bottom: 25px;
-  text-align: center;
+.navbar-menu a:hover {
+  color: var(--primary);
 }
 
-/* ===== FORM FIELDS ===== */
-.form-group {
-  margin-bottom: 20px;
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
+.navbar-user span {
   font-weight: 600;
-  color: #374151;
+  color: var(--dark);
   font-size: 0.9rem;
 }
 
-.form-group input {
-  width: 100%;
-  padding: 12px 16px;
-  border: 2px solid var(--border);
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--white);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 24px;
+}
+
+/* ===== SEARCH BAR ===== */
+.search-bar {
+  display: flex;
+  max-width: 500px;
+  margin: 0 auto;
+  gap: 10px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
   border-radius: var(--radius);
   font-size: 1rem;
   font-family: var(--font);
-  transition: border-color 0.3s, box-shadow 0.3s;
-  background: var(--white);
-  color: #1f2937;
-}
-
-/* Blue border when user clicks on input */
-.form-group input:focus {
   outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
-/* ===== BUTTONS ===== */
-.btn {
-  display: inline-block;
+.search-bar button {
   padding: 12px 24px;
+  background: var(--dark);
+  color: var(--white);
   border: none;
   border-radius: var(--radius);
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s;
-  text-align: center;
-  font-family: var(--font);
-  width: 100%;
+  transition: background 0.3s;
 }
 
-.btn-primary {
+.search-bar button:hover {
+  background: #000;
+}
+
+/* ===== CATEGORY FILTERS ===== */
+.filters {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+}
+
+.filters-wrap {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.filter-btn {
+  padding: 8px 20px;
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  background: var(--white);
+  color: var(--gray);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s;
+  font-family: var(--font);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
   background: var(--primary);
+  border-color: var(--primary);
   color: var(--white);
 }
 
-.btn-primary:hover {
-  background: var(--primary-dark);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+/* ===== MAIN LAYOUT ===== */
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 30px;
+  padding: 40px 0;
 }
 
-/* ===== ALERT MESSAGES ===== */
-/* These show success or error messages */
-.alert {
-  padding: 12px 16px;
-  border-radius: var(--radius);
-  margin-bottom: 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  display: none; /* Hidden by default */
+/* ===== POST GRID ===== */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
 }
 
-.alert-error {
-  background: #fef2f2;
-  color: var(--danger);
-  border: 1px solid #fecaca;
+/* ===== POST CARD ===== */
+.post-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
 }
 
-.alert-success {
-  background: #f0fdf4;
-  color: var(--success);
-  border: 1px solid #bbf7d0;
+.post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
 
-/* JS adds this class to show the alert */
-.alert.show {
-  display: block;
+.post-card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
 }
 
-/* ===== BOTTOM LINK ===== */
-/* "Already have account? Sign In" */
-.auth-switch {
-  text-align: center;
-  margin-top: 20px;
+.post-card-body {
+  padding: 20px;
+}
+
+.post-card-category {
+  display: inline-block;
+  background: var(--light-gray);
+  color: var(--primary);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.post-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 8px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.post-card-excerpt {
   color: var(--gray);
   font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.auth-switch a {
-  font-weight: 600;
-  color: var(--primary);
+.post-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
 }
 
-/* ===== LOADING SPINNER ===== */
-/* Shows inside button when request is loading */
-.spinner {
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
+.post-card-author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.post-card-author img {
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  border-top-color: white;
+  object-fit: cover;
+  background: var(--primary);
+}
+
+.post-card-author span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.post-card-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sidebar-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.sidebar-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+}
+
+.sidebar-post {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.sidebar-post:last-child {
+  border-bottom: none;
+}
+
+.sidebar-post-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dark);
+  line-height: 1.4;
+}
+
+.sidebar-post-meta {
+  font-size: 0.75rem;
+  color: var(--gray);
+  margin-top: 4px;
+}
+
+/* ===== LOADING & EMPTY STATE ===== */
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--gray);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
   animation: spin 0.8s ease infinite;
-  margin-right: 8px;
-  vertical-align: middle;
+  margin: 0 auto 16px;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--gray);
 }
 
-/* ===== MOBILE RESPONSIVE ===== */
-@media (max-width: 480px) {
-  .auth-box {
-    padding: 25px 20px;
+.empty-state h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: var(--dark);
+}
+
+/* ===== PAGINATION ===== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 30px 0;
+}
+
+.page-btn {
+  padding: 8px 16px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--gray);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: var(--font);
+}
+
+.page-btn:hover,
+.page-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .main-layout {
+    grid-template-columns: 1fr;
   }
 
-  .auth-logo h1 {
-    font-size: 1.6rem;
+  .sidebar {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .posts-grid {
+    grid-template-columns: 1fr;
   }
 }
