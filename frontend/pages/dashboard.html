@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BlogSpace — Dashboard</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    /* ── DASHBOARD STYLES ── */
+    .dashboard-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Hero Section */
+    .dashboard-hero {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
+      padding: 40px;
+      border-radius: 16px;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .hero-avatar {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .hero-info h2 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .hero-info p {
+      margin: 0;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+
+    .hero-joined {
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    .stat-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .stat-card-value {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .stat-card-label {
+      font-size: 0.85rem;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-hero {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 24px;
+      }
+
+      .stat-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Posts Section */
+    .posts-section {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .posts-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      border-bottom: 2px solid #f3f4f6;
+      padding-bottom: 16px;
+    }
+
+    .posts-header h3 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: #111827;
+    }
+
+    .write-btn {
+      background: #4f46e5;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .write-btn:hover {
+      background: #4338ca;
+    }
+
+    /* Tabs */
+    .tabs-wrap {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      border-bottom: 2px solid #f3f4f6;
+    }
+
+    .tab-btn {
+      padding: 12px 20px;
+      background: transparent;
+      border: none;
+      font-weight: 600;
+      color: #6b7280;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .tab-btn:hover {
+      color: #4f46e5;
+    }
+
+    .tab-btn.active {
+      color: #4f46e5;
+      border-bottom-color: #4f46e5;
+    }
+
+    /* Posts Table */
+    .posts-table-wrap {
+      overflow-x: auto;
+    }
+
+    .posts-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    .posts-table thead {
+      background: #f9fafb;
+      border-bottom: 2px solid #e5e7eb;
+    }
+
+    .posts-table th {
+      padding: 16px;
+      text-align: left;
+      font-weight: 600;
+      color: #374151;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .posts-table td {
+      padding: 16px;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .posts-table tbody tr:hover {
+      background: #f9fafb;
+    }
+
+    .post-table-title {
+      font-weight: 600;
+      color: #4f46e5;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      margin-bottom: 4px;
+    }
+
+    .post-table-title:hover {
+      color: #4338ca;
+      text-decoration: underline;
+    }
+
+    .post-table-excerpt {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .status-pill {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .status-pill.published {
+      background: #dbeafe;
+      color: #0369a1;
+    }
+
+    .status-pill.draft {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .post-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .action-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      border: 1px solid #e5e7eb;
+      background: white;
+      cursor: pointer;
+    }
+
+    .action-btn:hover {
+      background: #f3f4f6;
+      border-color: #d1d5db;
+    }
+
+    .action-btn.delete:hover {
+      background: #fee2e2;
+      border-color: #ef4444;
+      color: #dc2626;
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 60px 40px;
+      color: #6b7280;
+    }
+
+    .empty-state h3 {
+      font-size: 1.3rem;
+      color: #374151;
+      margin: 0 0 12px 0;
+    }
+
+    .empty-state p {
+      margin: 0 0 24px 0;
+      color: #9ca3af;
+    }
+
+    .empty-state .btn {
+      display: inline-flex;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="navbar-brand">✍️ BlogSpace</a>
+      <div class="navbar-menu">
+        <a href="../index.html">Home</a>
+        <a href="../pages/editor.html">Write</a>
+        <a href="../pages/dashboard.html">Dashboard</a>
+        <div class="navbar-user" id="navbarUser">
+          <!-- Filled by JS based on login status -->
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="dashboard-container">
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="dashboard-hero">
+      <div class="hero-left">
+        <div class="hero-avatar" id="dashAvatar">A</div>
+        <div class="hero-info">
+          <h2 id="dashName">Your Name</h2>
+          <p id="dashEmail">your@email.com</p>
+          <p class="hero-joined" id="dashJoined">📅 Member since January</p>
+        </div>
+      </div>
+
+      <div class="stat-cards">
+        <div class="stat-card">
+          <div class="stat-card-value" id="statPosts">0</div>
+          <div class="stat-card-label">Posts</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-value" id="statViews">0</div>
+          <div class="stat-card-label">Views</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-value" id="statLikes">0</div>
+          <div class="stat-card-label">Likes</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-value" id="statFollowers">0</div>
+          <div class="stat-card-label">Followers</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== POSTS SECTION ===== -->
+    <section class="posts-section">
+      <div class="posts-header">
+        <h3>📝 Your Posts</h3>
+        <a href="editor.html" class="write-btn">✍️ Write New Post</a>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs-wrap">
+        <button class="tab-btn active" onclick="switchTab('published')">
+          🌍 Published
+        </button>
+        <button class="tab-btn" onclick="switchTab('draft')">
+          📝 Drafts
+        </button>
+      </div>
+
+      <!-- Posts Table Wrap -->
+      <div id="postsTableWrap">
+        <div class="empty-state" style="padding:40px;">
+          <h3>📭 No posts yet</h3>
+          <p>Start writing your first post!</p>
+          <a href="editor.html" class="btn btn-primary" style="width:auto;padding:10px 24px;display:inline-block;margin-top:16px;">
+            ✍️ Write a Post
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="../js/auth.js"></script>
+  <script src="../js/dashboard.js"></script>
+
+</body>
+</html>

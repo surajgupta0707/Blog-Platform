@@ -114,6 +114,30 @@ router.get('/:slug', async (req, res) => {
   }
 });
 
+// ================================================
+// @route   GET /api/posts/user/:userId
+// @desc    Get all posts by a specific user
+// @access  Private
+// ================================================
+router.get('/user/:userId', protect, async (req, res) => {
+  try {
+    const posts = await Post.find({ author: req.params.userId })
+      .sort({ createdAt: -1 });
+
+    res.json({
+      success: true,
+      count: posts.length,
+      posts
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
+
 
 module.exports = router;
 // ================================================
