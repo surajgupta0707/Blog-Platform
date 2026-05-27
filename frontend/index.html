@@ -31,8 +31,8 @@
         type="text" 
         id="searchInput" 
         placeholder="Search posts..." 
-      />
-      <button onclick="searchPosts()">Search</button>
+      >
+      <button type="button" onclick="searchPosts()">Search</button>
     </div>
   </section>
 
@@ -40,28 +40,28 @@
   <section class="filters">
     <div class="container">
       <div class="filters-wrap" id="filtersWrap">
-        <button class="filter-btn active" onclick="filterByCategory('')">
+        <button type="button" class="filter-btn active" onclick="filterByCategory('', event)">
           All
         </button>
-        <button class="filter-btn" onclick="filterByCategory('Technology')">
+        <button type="button" class="filter-btn" onclick="filterByCategory('Technology', event)">
           Technology
         </button>
-        <button class="filter-btn" onclick="filterByCategory('Travel')">
+        <button type="button" class="filter-btn" onclick="filterByCategory('Travel', event)">
           Travel
         </button>
-        <button class="filter-btn" onclick="filterByCategory('Food')">
+        <button type="button" class="filter-btn" onclick="filterByCategory('Food', event)">
           Food
         </button>
-        <button class="filter-btn" onclick="filterByCategory('Health')">
+        <button type="button" class="filter-btn" onclick="filterByCategory('Health', event)">
           Health
         </button>
-        <button class="filter-btn" onclick="filterByCategory('Business')">
+        <button type="button" class="filter-btn" onclick="filterByCategory('Business', event)">
           Business
         </button>
-        <button class="filter-btn" onclick="filterByCategory('Education')">
+        <button type="button" class="filter-btn" onclick="filterByCategory('Education', event)">
           Education
         </button>
-        <button class="filter-btn" onclick="filterByCategory('Entertainment')">
+        <button type="button" class="filter-btn" onclick="filterByCategory('Entertainment', event)">
           Entertainment
         </button>
       </div>
@@ -93,22 +93,22 @@
         <div class="sidebar-card">
           <h3>🔥 Trending Posts</h3>
           <div id="trendingPosts">
-            <p style="color:var(--gray);font-size:0.9rem;">Loading...</p>
+            <p>Loading...</p>
           </div>
         </div>
 
         <!-- Write a Post CTA -->
-        <div class="sidebar-card" style="background: linear-gradient(135deg,#667eea,#764ba2); color:white;">
-          <h3 style="color:white;border-color:rgba(255,255,255,0.3);">
+        <div class="sidebar-card cta-card">
+          <h3>
             ✍️ Start Writing
           </h3>
-          <p style="font-size:0.9rem;margin-bottom:16px;opacity:0.9;">
+          <p>
             Share your ideas with the world!
           </p>
           <button 
+            type="button"
             onclick="goToEditor()" 
-            class="btn" 
-            style="background:white;color:var(--primary);width:100%;">
+            class="btn btn-primary btn-full">
             Write a Post
           </button>
         </div>
@@ -122,3 +122,4 @@
   <script src="js/posts.js"></script>
 </body>
 </html>
+

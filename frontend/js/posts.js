@@ -177,14 +177,18 @@ function goToPage(page) {
 }
 
 // ===== FILTER BY CATEGORY =====
-function filterByCategory(category) {
+function filterByCategory(category, event) {
   currentCategory = category;
   currentPage     = 1;
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.classList.remove('active');
   });
-  event.target.classList.add('active');
+
+  const clickedButton = event?.currentTarget || event?.target;
+  if (clickedButton && clickedButton.classList) {
+    clickedButton.classList.add('active');
+  }
 
   loadPosts();
 }
@@ -195,6 +199,11 @@ function searchPosts() {
   currentSearch   = input.value.trim();
   currentPage     = 1;
   currentCategory = '';
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+
   loadPosts();
 }
 
