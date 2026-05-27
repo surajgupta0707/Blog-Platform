@@ -82,20 +82,13 @@ const UserSchema = new mongoose.Schema({
 // ===== MIDDLEWARE =====
 // This runs automatically BEFORE saving a user to the database
 // It hashes (encrypts) the password so we never store plain text passwords
-UserSchema.pre('save', async function(next) {
-
-  // Only hash if password was changed (not on other updates)
+UserSchema.pre('save', async function() {
   if (!this.isModified('password')) {
-    next();
+    return;
   }
-
-  // Generate a "salt" — random data added to password before hashing
   const salt = await bcrypt.genSalt(10);
-
-  // Replace plain text password with hashed version
   this.password = await bcrypt.hash(this.password, salt);
 });
-
 // ===== CUSTOM METHOD =====
 // This method lets us check if an entered password matches 
 // the hashed password stored in database
