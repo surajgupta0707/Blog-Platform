@@ -260,3 +260,7 @@ function goToEditor() {
     window.location.href = 'pages/editor.html';
   }
 }
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}

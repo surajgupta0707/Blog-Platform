@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BlogSpace — Search</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="navbar-brand">✍️ BlogSpace</a>
+      <div class="navbar-menu">
+        <a href="../index.html">Home</a>
+        <a href="editor.html">Write</a>
+        <div class="navbar-user" id="navbarUser"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== SEARCH HERO ===== -->
+  <div class="search-hero">
+    <h1>🔍 Search BlogSpace</h1>
+    <div class="search-hero-bar">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search posts, topics, authors..."
+      />
+      <button onclick="doSearch()">Search</button>
+    </div>
+  </div>
+
+  <!-- ===== FILTER BAR ===== -->
+  <div class="filter-bar">
+    <div class="container">
+      <div class="filter-bar-inner">
+        <span class="filter-bar-label">Filter by:</span>
+        <select class="filter-select"
+                id="categoryFilter"
+                onchange="doSearch()">
+          <option value="">All Categories</option>
+          <option value="Technology">Technology</option>
+          <option value="Travel">Travel</option>
+          <option value="Food">Food</option>
+          <option value="Health">Health</option>
+          <option value="Business">Business</option>
+          <option value="Education">Education</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Sports">Sports</option>
+        </select>
+
+        <select class="filter-select"
+                id="sortFilter"
+                onchange="doSearch()">
+          <option value="">Latest First</option>
+          <option value="popular">Most Popular</option>
+          <option value="liked">Most Liked</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== RESULTS ===== -->
+  <div class="container">
+    <div class="search-info" id="searchInfo"></div>
+    <div id="searchResults">
+      <div class="empty-state" style="padding:60px 20px;">
+        <h3>🔍 Start searching!</h3>
+        <p>Type something above to find posts</p>
+      </div>
+    </div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">✍️ BlogSpace</div>
+        <div class="footer-desc">
+          A platform for writers and readers to connect,
+          share ideas, and discover great stories.
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="../index.html">Home</a>
+        <a href="search.html">Search</a>
+        <a href="editor.html">Write a Post</a>
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <a href="../index.html">Technology</a>
+        <a href="../index.html">Travel</a>
+        <a href="../index.html">Health</a>
+        <a href="../index.html">Business</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 BlogSpace. Built with ❤️</span>
+      <span>Made by B.Tech Student</span>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+    ↑
+  </button>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/posts.js"></script>
+  <script src="../js/search.js"></script>
+</body>
+</html>
