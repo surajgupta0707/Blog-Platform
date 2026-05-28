@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BlogSpace — Profile</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="navbar-brand">✍️ BlogSpace</a>
+      <div class="navbar-menu">
+        <a href="../index.html">Home</a>
+        <a href="editor.html">Write</a>
+        <div class="navbar-user" id="navbarUser"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== PROFILE HERO ===== -->
+  <div id="profileHero">
+    <div class="loading"
+         style="background:linear-gradient(135deg,#1e1b4b,#4f46e5);
+                color:white;padding:60px 20px;">
+      <div class="loading-spinner"
+           style="border-color:rgba(255,255,255,0.3);
+                  border-top-color:white;">
+      </div>
+      <p>Loading profile...</p>
+    </div>
+  </div>
+
+  <!-- ===== PROFILE CONTENT ===== -->
+  <div class="profile-content">
+    <div class="profile-posts-title" id="postsTitle">
+      Posts
+    </div>
+    <div id="profilePosts">
+      <div class="loading">
+        <div class="loading-spinner"></div>
+        <p>Loading posts...</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/posts.js"></script>
+  <script src="../js/profile.js"></script>
+</body>
+</html>
