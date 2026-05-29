@@ -8,7 +8,7 @@
     "dev": "nodemon server.js"
   },
   "engines": {
-  "node": "20.x"
+  "node": "18.x"
 },
   "keywords": [],
   "author": "",
@@ -20,7 +20,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.6.2",
+    "mongoose": "^8.0.0",
     "multer": "^2.1.1",
     "slugify": "^1.6.9"
   },

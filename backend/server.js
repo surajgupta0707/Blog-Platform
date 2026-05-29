@@ -2,8 +2,12 @@ const express   = require('express');
 const cors      = require('cors');
 const dotenv    = require('dotenv');
 const path      = require('path');
-const crypto    = require('crypto');
 const connectDB = require('./config/db');
+
+// Polyfill crypto global for Node.js 20+ compatibility
+if (!global.crypto) {
+  global.crypto = require('crypto');
+}
 
 dotenv.config();
 connectDB();
