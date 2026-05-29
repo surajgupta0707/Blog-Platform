@@ -34,5 +34,18 @@ JWT_SECRET=your_secret_key
 ### 4. Run the server
 npm run dev
 
-## 📅 Built in 30 Days
+## � Deployment
+
+### Backend on Render
+1. Create a Render Web Service from the repo.
+2. Set the root directory to `backend`.
+3. Use build command `npm install` and start command `node server.js`.
+4. Add the environment variables from `backend/.env.example`.
+5. Set `ALLOWED_ORIGINS` to your deployed frontend URL(s).
+
+### Frontend on Netlify or similar static host
+1. Host the `frontend/` folder as static files.
+2. Open `frontend/js/config.js` and replace `window.BLOGSPACE_API_BASE` with your deployed backend URL.
+
+## �📅 Built in 30 Days
 Following a day-by-day build schedule.

@@ -1,6 +1,6 @@
 // ===== API URL =====
 // This is where all our API requests go
-const API_URL = 'http://localhost:5000/api';
+const API_URL = window.BLOGSPACE_API_URL || 'http://localhost:5000/api';
 
 
 // ===== SHOW ERROR MESSAGE =====

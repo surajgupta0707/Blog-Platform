@@ -9,13 +9,25 @@ connectDB();
 
 const app = express();
 
-// ✅ CORS — Allow requests from your Netlify URL
+const localOrigins = [
+  'http://localhost:5500',
+  'http://127.0.0.1:5500'
+];
+
+const envOrigins = (process.env.ALLOWED_ORIGINS || '')
+  .split(',')
+  .map(origin => origin.trim())
+  .filter(Boolean);
+
+const allowedOrigins = [...new Set([...localOrigins, ...envOrigins])];
+
+// ✅ CORS — allow local development plus deployed frontend origins
 app.use(cors({
-  origin: [
-    'http://localhost:5500',
-    'http://127.0.0.1:5500',
-    'https://your-blogspace.netlify.app' // ← update after deploying
-  ],
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error(`CORS blocked for origin: ${origin}`), false);
+  },
   credentials: true
 }));
 
