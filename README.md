@@ -1,51 +1,75 @@
-# ✍️ BlogSpace - Full Stack Blog Platform
+# ✍️ BlogSpace — Full Stack Blog Platform
 
-A full-stack blog platform built with HTML, CSS, JavaScript, Node.js and MongoDB.
+A complete full-stack blog platform built with HTML, CSS, JavaScript, Node.js, Express.js and MongoDB.
 
-## 🚀 Features
-- User Authentication (Register/Login)
-- Create, Read, Update, Delete Posts
-- Rich Text Editor
-- Comments & Likes
-- User Profiles & Follow System
-- Search & Filter Posts
-- Responsive Design
+![BlogSpace](https://img.shields.io/badge/BlogSpace-v1.0.0-4f46e5)
+![Node.js](https://img.shields.io/badge/Node.js-18.x-green)
+![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green)
+![License](https://img.shields.io/badge/License-MIT-blue)
+
+---
+
+## 🌍 Live Demo
+
+- **Frontend:** https://blogspace-2026.netlify.app
+- **Backend API:** https://blogspace-api-q7sv.onrender.com
+
+---
+
+## 📸 Screenshots
+
+### Home Page
+![Home Page](screenshots/home.png)
+
+### Post Editor
+![Editor](screenshots/editor.png)
+
+### User Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+---
+
+## ✨ Features
+
+- ✅ User Registration & Login (JWT Authentication)
+- ✅ Create, Edit, Delete Blog Posts
+- ✅ Rich Text Editor (Quill.js)
+- ✅ Featured Image Upload
+- ✅ Categories & Tags
+- ✅ Search & Filter Posts
+- ✅ Comment System
+- ✅ Like & Bookmark Posts
+- ✅ Follow / Unfollow Authors
+- ✅ User Dashboard with Stats
+- ✅ Author Profile Pages
+- ✅ Responsive Design (Mobile Friendly)
+- ✅ Pagination
+
+---
 
 ## 🛠️ Tech Stack
-- **Frontend:** HTML, CSS, JavaScript
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB + Mongoose
-- **Auth:** JWT + bcryptjs
 
-## ⚙️ Setup Instructions
+### Frontend
+- HTML5, CSS3, JavaScript (ES6+)
+- Quill.js (Rich Text Editor)
+- Responsive CSS Grid & Flexbox
 
-### 1. Clone the repo
-git clone https://github.com/YOUR_USERNAME/blog-platform.git
+### Backend
+- Node.js + Express.js
+- JWT Authentication
+- bcryptjs (Password Hashing)
+- Multer (File Uploads)
+- Slugify (URL Generation)
 
-### 2. Install dependencies
-cd backend
-npm install
+### Database
+- MongoDB Atlas (Cloud NoSQL)
+- Mongoose ODM
 
-### 3. Create .env file
-PORT=5000
-MONGO_URI=your_mongodb_uri
-JWT_SECRET=your_secret_key
+### Deployment
+- Frontend: Netlify
+- Backend: Render
+- Database: MongoDB Atlas
 
-### 4. Run the server
-npm run dev
+---
 
-## � Deployment
-
-### Backend on Render
-1. Create a Render Web Service from the repo.
-2. Set the root directory to `backend`.
-3. Use build command `npm install` and start command `node server.js`.
-4. Add the environment variables from `backend/.env.example`.
-5. Set `ALLOWED_ORIGINS` to your deployed frontend URL(s).
-
-### Frontend on Netlify or similar static host
-1. Host the `frontend/` folder as static files.
-2. Open `frontend/js/config.js` and replace `window.BLOGSPACE_API_BASE` with your deployed backend URL.
-
-## �📅 Built in 30 Days
-Following a day-by-day build schedule.
+## 📁 Project Structure
